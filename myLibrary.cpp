@@ -27,26 +27,26 @@ vector<int> removeDuplicates(vector<int> numberList){
     return copyList;
 }
 
-vector<int> sumIndicies(vector<int>numberList, int sum){
-    vector<int> indices;
+pair<int, int> sumIndices(vector<int>numberList, int sum){
+    pair<int, int> indices = {-1, -1};
     int expected;
     int vectorsize = numberList.size();
     if (vectorsize < 2){
-        indices.push_back(-1);
-        indices.push_back(-1);
+        indices.first = -1;
+        indices.second = -1;
         return indices;
     }
     for (int i = 0; i < vectorsize; i++){
         expected = sum - numberList[i];
         for (int j = (i+1); j < vectorsize; j++){
             if (numberList[j] == expected){
-                indices.push_back(i);
-                indices.push_back(j);
+                indices.first = i;
+                indices.second = j;
                 return indices;
             }
         }
     }
-    indices.push_back(-1);
-    indices.push_back(-1);
+    indices.first = -1;
+    indices.second = -1;
     return indices;
 }
